@@ -11,9 +11,12 @@ Jinja2==3.0.3
 Mako==1.1.6
 MarkupSafe==2.0.1
 marshmallow==3.14.1
+<<<<<<< Updated upstream
 marshmallow-sqlalchemy==0.26.1
 python-dotenv==0.19.2
 python-environ==0.4.54
+=======
+>>>>>>> Stashed changes
 six==1.16.0
 SQLAlchemy==1.4.28
 Werkzeug==2.0.2
