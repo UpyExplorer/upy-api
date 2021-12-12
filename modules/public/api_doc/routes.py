@@ -12,4 +12,5 @@ class ViewDoc(object):
 
     @mod_doc.route('/', methods=['GET'])
     def home():
-        return redirect("/docs/")
+        return redirect("http://app.upyexplorer.com/")
+        # return redirect("/docs/")
