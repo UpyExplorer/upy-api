@@ -1,17 +1,18 @@
 import os
+import environ
 from flask_swagger_ui import get_swaggerui_blueprint
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))  
-DEBUG = os.environ.get("DEBUG")
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
-SQLALCHEMY_TRACK_MODIFICATIONS = False
-SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI")
-DATABASE_CONNECT_OPTIONS = {}
-THREADS_PER_PAGE = 2
+env = environ.Env()
+environ.Env.read_env(BASE_DIR+"/.env")
 
-CSRF_ENABLED = True
-CSRF_SESSION_KEY = os.environ.get("CSRF_SESSION_KEY")
-SECRET_KEY = os.environ.get("SECRET_KEY")
+FLASK_ENV = env("FLASK_ENV")
+
+if FLASK_ENV == 'production':
+    from app.conf.production.settings import *
+else:
+    from app.conf.development.settings import *
 
 SWAGGER_URL = '/docs'
 API_URL = BASE_DIR + "/staticfiles/swagger.json"
