@@ -5,9 +5,9 @@ from os.path import dirname
 BASE_DIR = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
 
 env = environ.Env()
-environ.Env.read_env(BASE_DIR+"/.env")
+environ.Env.read_env(BASE_DIR+"/../env")
 
-print(BASE_DIR+"/.env")
+print(BASE_DIR+"/../env")
 
 DEBUG = env.bool("DEBUG", False)
 PORT = env("PORT")
