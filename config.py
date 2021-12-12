@@ -14,7 +14,7 @@ CSRF_SESSION_KEY = os.environ.get("CSRF_SESSION_KEY")
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 SWAGGER_URL = '/docs'
-API_URL = '/static/swagger.json'
+API_URL = BASE_DIR + "/staticfiles/swagger.json"
 SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
     SWAGGER_URL,
     API_URL,
