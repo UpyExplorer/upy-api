@@ -12,7 +12,6 @@ from flask_marshmallow import Marshmallow
 
 from app.api.routes import mod_upy
 
-
 app = Flask(__name__)
 
 def page_not_found(self, error):
@@ -30,3 +29,5 @@ app.register_blueprint(mod_upy)
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 db.init_app(app)
+
+from app.models.base_application import BaseApplication
