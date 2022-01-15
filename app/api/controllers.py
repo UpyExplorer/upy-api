@@ -4,6 +4,7 @@
 Module API
 """
 
+from upy_error import format_exception
 from app.api.responses import BaseResponse
 
 
@@ -27,7 +28,7 @@ class BaseController(object):
         Returns:
             json: Returned from data
         """
-        return self.response.get(method='successfully_fetched')
+        return self.response.get(method='method_not_allowed')
 
     def get(self, model_id):
         """Method GET
@@ -36,7 +37,16 @@ class BaseController(object):
         Returns:
             json: Returned from data
         """
-        return self.response.get(method='successfully_fetched')
+        try:
+            query = self.model_class.query.filter(self.model_class.id == model_id).first()
+            if query:
+                result = self.base_schema.dump(query)
+                return self.response.get(method='successfully_fetched', result=result, limit=1, total=1)
+        except Exception as error:
+            print(format_exception(error))
+            return self.response.get(method='server_error')
+
+        return self.response.get(method='successfully_fetched', limit=1, total=0)
 
     def put(self, model_id):
         """Method PUT
@@ -46,7 +56,7 @@ class BaseController(object):
         Returns:
             json: Returned from data
         """
-        return self.response.get(method='successfully_fetched')
+        return self.response.get(method='method_not_allowed')
 
     def post(self):
         """Method POST
@@ -55,7 +65,7 @@ class BaseController(object):
         Returns:
             json: Returned from data
         """
-        return self.response.get(method='successfully_fetched')
+        return self.response.get(method='method_not_allowed')
 
     def delete(self, model_id):
         """Method DELETE

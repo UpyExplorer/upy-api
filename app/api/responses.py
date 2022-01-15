@@ -17,7 +17,7 @@ class BaseResponse():
 
         self.data_return = {
             "successfully_fetched": {
-                "status": 201,
+                "status": 200,
                 "status_message": "success",
                 "message": "Successful Fetched"
                 },
@@ -78,7 +78,7 @@ class BaseResponse():
                 },
         }
 
-    def get(self, method, limit=None, quantity=None, result=None):
+    def get(self, method, limit=None, total=None, result=None):
         """API response
         Args:
             method (str): Method Name.
@@ -94,7 +94,7 @@ class BaseResponse():
                     "status_message": self.data_return[method]['status_message'],
                     "message": self.data_return[method]['message'],
                     "limit": limit,
-                    "total": quantity
+                    "total": total
                 },
                 "result": result
             }
