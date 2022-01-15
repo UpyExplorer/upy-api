@@ -1,6 +1,9 @@
 # coding=utf-8
 
-from app import db
+"""
+Module API
+"""
+
 from app.api.responses import BaseResponse
 
 
