@@ -10,8 +10,6 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
-from app.api.routes import mod_upy
-
 app = Flask(__name__)
 
 def page_not_found(self, error):
@@ -23,11 +21,12 @@ def page_not_found(self, error):
 app.config.from_object('config')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-app.register_error_handler(404, page_not_found)
-app.register_blueprint(mod_upy)
-
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
-db.init_app(app)
 
-from app.models.base_application import BaseApplication
+from modules.system.application_link.urls import mod_application_link
+
+app.register_error_handler(404, page_not_found)
+app.register_blueprint(mod_application_link)
+
+db.init_app(app)

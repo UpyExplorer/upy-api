@@ -1,7 +1,7 @@
 # coding=utf-8
 
 """
-Module Docstring
+Module API
 """
 
 from flask import request
