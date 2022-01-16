@@ -12,8 +12,6 @@ if __name__ == "__main__":
     host = app.config['HOST']
     port = app.config['PORT']
     
-    print(app.config['FLASK_ENV'])
-
     if app.config['FLASK_ENV'] == 'production':
         serve(app, host=host, port=port)
     else:
