@@ -12,6 +12,7 @@ if __name__ == "__main__":
     host = app.config['HOST']
     port = app.config['PORT']
 
-    app.run(host=host, port=port)
-    # serve(app, host=host, port=port)
-
+    if bool(app.config['DEBUG']) == True:
+        serve(app, host=host, port=port)
+    else:
+        app.run(host=host, port=port)
