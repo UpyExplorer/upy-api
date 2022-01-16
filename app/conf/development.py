@@ -7,7 +7,7 @@ BASE_DIR = dirname(dirname(dirname(os.path.abspath(__file__))))
 env = environ.Env()
 environ.Env.read_env(BASE_DIR+"/.env")
 
-DEBUG = env.bool("DEBUG", False)
+DEBUG = env.bool("FLASK_DEBUG", False)
 PORT = env("PORT")
 HOST = env("HOST")
 
