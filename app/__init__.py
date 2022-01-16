@@ -25,8 +25,10 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
 from modules.system.application_link.urls import mod_application_link
+from modules.system.base_application.urls import mod_base_application
 
 app.register_error_handler(404, page_not_found)
 app.register_blueprint(mod_application_link)
+app.register_blueprint(mod_base_application)
 
 db.init_app(app)
