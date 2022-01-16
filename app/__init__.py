@@ -30,5 +30,10 @@ from modules.system.base_application.urls import mod_base_application
 app.register_error_handler(404, page_not_found)
 app.register_blueprint(mod_application_link)
 app.register_blueprint(mod_base_application)
+from modules.system.ads_link.urls import mod_ads_link
+
+app.register_error_handler(404, page_not_found)
+app.register_blueprint(mod_application_link)
+app.register_blueprint(mod_ads_link)
 
 db.init_app(app)
