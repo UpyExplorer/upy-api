@@ -5,7 +5,7 @@ Module URL
 """
 
 from flask import Blueprint
-from app.api.decorators import BaseDecorator
+from app.api.decorators import system, validate_token
 from modules.system.application_link.controller import ApplicationLinkControler
 
 mod_application_link = Blueprint('applications', __name__, url_prefix='/applications')
@@ -16,21 +16,25 @@ class ApplicationLinkUrl():
     """
 
     @mod_application_link.route('/', methods=['GET'])
-    @BaseDecorator.system
-    def get_all(data):
+    @validate_token
+    @system
+    def get_all(user, data):
         return ApplicationLinkControler(data=data).get_all()
 
     @mod_application_link.route('/', methods=['POST'])
-    @BaseDecorator.system
-    def post(data):
+    @validate_token
+    @system
+    def post(user, data):
         return ApplicationLinkControler(data=data).post()
 
     @mod_application_link.route('/<id>', methods=['GET'])
-    @BaseDecorator.system
-    def get(data, id):
+    @validate_token
+    @system
+    def get(user, data, id):
         return ApplicationLinkControler(data=data).get(model_id=id)
 
     @mod_application_link.route('/<id>', methods=['PUT'])
-    @BaseDecorator.system
-    def put(data, id):
+    @validate_token
+    @system
+    def put(user, data, id):
         return ApplicationLinkControler(data=data).put(model_id=id)
